@@ -32,19 +32,19 @@ Select S. staffNo, S. name, SL. description, S. Dept
 From Staff S, Skill SL
 Where S. skillCode = SL. SkillCode;
 
-The following tables form part of a database held in a Relational Database Management System. Use this schema to answer queries 3, 4, 5, & 6.
+#The following tables form part of a database held in a Relational Database Management System. Use this schema to answer queries 3, 4, 5, & 6.
 
-	Employee	(empID, fName, lName, address, DOB, sex, position, deptNo)
-	Department	(deptNo, deptName, mgrEmpID)
-	Project		(projNo, projName, deptNo)
-	WorksOn	(empID, projNo, hoursWorked)
+#	Employee	(empID, fName, lName, address, DOB, sex, position, deptNo)
+#	Department	(deptNo, deptName, mgrEmpID)
+#	Project		(projNo, projName, deptNo)
+#	WorksOn	(empID, projNo, hoursWorked)
 
-	where	Employee contains employee details and empID is the key.
-	Department 	contains department details and deptNo is the key. mgrEmpID identifies the employee who is the manager of the department. There is only one manager for each department.
-	Project	 contains details of the projects in each department and the key is projNo (no two departments can run the same project) and WorksOn contains details of the hours worked by employees on each project, and empID/projNo form the key.
+#	where	Employee contains employee details and empID is the key.
+#	Department 	contains department details and deptNo is the key. mgrEmpID identifies the employee who is the manager of the department. There is only one manager for each department.
+#	Project	 contains details of the projects in each department and the key is projNo (no two departments can run the same project) and WorksOn contains details of the hours worked by employees on each project, and empID/projNo form the key.
 
 #Question 3: Produce a complete list of all managers who are due to retire this year, in alphabetical order of surname.
-Suppose retirement age is 60:
+#Suppose retirement age is 60:
 
 Select lName From Department D, Employee E 
 Where 
@@ -79,15 +79,15 @@ Group By P.projNo, P.projName
 Having count(E.empID) >2;
 
 #-------------------------------
-The relational schema shown below is part of a hospital database. The primary keys are highlighted in bold.
+#The relational schema shown below is part of a hospital database. The primary keys are highlighted in bold.
 
-	Patient (patientNo, patName, patAddr, DOB)
-	Ward (wardNo, wardName, wardType, noOfBeds)
-	Contains (patientNo, wardNo, admissionDate)
-	Drug (drugNo, drugName, costPerUnit)
-  Prescribed (patientNo, drugNo, unitsPerDay, startDate, finishDate)
+#	Patient (patientNo, patName, patAddr, DOB)
+#	Ward (wardNo, wardName, wardType, noOfBeds)
+#	Contains (patientNo, wardNo, admissionDate)
+#	Drug (drugNo, drugName, costPerUnit)
+#  Prescribed (patientNo, drugNo, unitsPerDay, startDate, finishDate)
 				         		
-	Formulate the following SQL statements using the above schema (7, 8, & 9)
+#	Formulate the following SQL statements using the above schema (7, 8, & 9)
 
 
 #Question 7: What is the total cost of Morphine supplied to a patient called ‘John Smith’ ?
@@ -120,15 +120,15 @@ Left Join Prescribed P
 On P. patientNo=Pat. patientNo;
 
 #-----------------------------------------------------
-A relational database contains details about journeys from Paisley to a variety of destinations and contains the following relations:
+#A relational database contains details about journeys from Paisley to a variety of destinations and contains the following relations:
 
-		Operator (opCode, opName)
-		Journey (opCode, destinationCode, price)
-		Destination (destinationCode, destinationName, distance)
+#		Operator (opCode, opName)
+#		Journey (opCode, destinationCode, price)
+#		Destination (destinationCode, destinationName, distance)
 
-	Each operator is assigned a unique code (opCode) and the relation operator records the association between this code and the operator’s name (opName). Each destination has a unique code (destinationCode) and the relation destination records the association between this code and the destination name (destinationName), and the distance of the destination from Paisley. The relation Journey records the price of an adult fare from Paisley to the given destination by as specified operator, several operators may operate over the same route.
+#	Each operator is assigned a unique code (opCode) and the relation operator records the association between this code and the operator’s name (opName). Each destination has a unique code (destinationCode) and the relation destination records the association between this code and the destination name (destinationName), and the distance of the destination from Paisley. The relation Journey records the price of an adult fare from Paisley to the given destination by as specified operator, several operators may operate over the same route.
 
-Formulate the following queries using SQL (10, 11, & 12)
+#Formulate the following queries using SQL (10, 11, & 12)
 
 #Question 10:	List the names of all operators with at least one journey priced at under £5.
 
@@ -157,20 +157,20 @@ Where
 J. destinationCode=D. destinationCode
 And J. opCode <> O. opCode
 
-The following tables form part of a database held in a Relational Database Management System:
+#The following tables form part of a database held in a Relational Database Management System:
 
-	Employee	(empNo, eName, salary, position)
-	Aircraft	(aircraftNo, aName, aModel, flyingRange)
-	Flight		(flightNo, from, to, flightDistance, departTime, arriveTime)
-	Certified	(empNo, aircraftNo)
+#	Employee	(empNo, eName, salary, position)
+#	Aircraft	(aircraftNo, aName, aModel, flyingRange)
+#	Flight		(flightNo, from, to, flightDistance, departTime, arriveTime)
+#	Certified	(empNo, aircraftNo)
 
-	where	Employee contains details of all employees (pilots and non-pilots) and empNo is the key. 
-  AirCraft contains details of aircraft and aircraftNo is the key. 
-  Flight contains details of the flights and flightNo is the key.
-	and Certified contains details of the staff who are certified to fly an aircraft, and     
-  empNo/aircraftNo form the key.
+#	where	Employee contains details of all employees (pilots and non-pilots) and empNo is the key. 
+#       AirCraft contains details of aircraft and aircraftNo is the key. 
+#       Flight contains details of the flights and flightNo is the key.
+#	and Certified contains details of the staff who are certified to fly an aircraft, and     
+#       empNo/aircraftNo form the key.
 
-Formulate the following queries in SQL (13, 14, 15, & 16)
+#Formulate the following queries in SQL (13, 14, 15, & 16)
 
 #Question 13:	List the employee numbers of employees who have the highest salary.
 
@@ -200,7 +200,7 @@ Having count(aircraftNo) = 3;
     Customer(custNo, custName, address, sex, DOB, creditLimit) 
     HighCredit(hcCustNo, hcCustName, hcCreditLimit)
 
-Create a PL/SQL procedure object in your schema. Using a prompt variable to retrieve record of a customers and check his/her credit limit. If a customer credit limit is greater than 100000 the procedure should insert a record in the table HighCredits.
+#Create a PL/SQL procedure object in your schema. Using a prompt variable to retrieve record of a customers and check his/her credit limit. If a customer credit limit is greater than 100000 the procedure should insert a record in the table HighCredits.
 
 #Answer 16:
 
@@ -229,10 +229,10 @@ END;
 
 #Question 17:	Assume the following tables:
 
-Order(orderNo, statusCode, customerNo,…)
-Item(itemNo, orderNo, price, amount,…)
+#Order(orderNo, statusCode, customerNo,…)
+#Item(itemNo, orderNo, price, amount,…)
 
-which capture, among others, the items that are ordered by customers. Explain what the following code is and explain how it works by writing comments against each line of the code: 
+#which capture, among others, the items that are ordered by customers. Explain what the following code is and explain how it works by writing comments against each line of the code: 
 
 #Answer 17:
 SET SERVEROUTPUT ON
@@ -256,67 +256,68 @@ DBMS_OUTPUT.PUTLINE(CustomerNo_in);
 
 END;
 
-Explanation : 
-Step 1 : First line : Turns on serveroutput then 
-Define variable StatusCode_int  datatype same as Order.statusCode, 
-Define variable customerNo_in datatype same as Order.customerNo_in
-Define new variable Total_Order datatype as DECIMAL(6,2)
+#Explanation : 
+#Step 1 : First line : Turns on serveroutput then 
 
-Step 2: 
-Begin the query : Calculating Total Order from table item by summing up the product of price and amount and store it in variable Total_Order. 
+#Define variable StatusCode_int  datatype same as Order.statusCode, 
+#Define variable customerNo_in datatype same as Order.customerNo_in
+#Define new variable Total_Order datatype as DECIMAL(6,2)
 
-Condition of query : EXISTS condition is true if subquery return some data from table Order if all three conditions inside sub query get true like orderNo of item and order, given customer and statusCode_in returns some data.
+#Step 2: 
+#Begin the query : Calculating Total Order from table item by summing up the product of price and amount and store it in variable Total_Order. 
 
-Step 3: 
-Checking the output of above query whether Total_Order is greater than 500.If greater than 500 then Display output as High Value Customer  else CustomerNo_in and END the query.
+#Condition of query : EXISTS condition is true if subquery return some data from table Order if all three conditions inside sub query get true like orderNo of item and order, given customer and statusCode_in returns some data.
+
+#Step 3: 
+#Checking the output of above query whether Total_Order is greater than 500.If greater than 500 then Display output as High Value Customer  else CustomerNo_in and END the query.
 
 ####----------------------------------------------------
-Consider the relational model for Bearcat Incorporated. 
-EMPLOYEE (Emp_fname, Emp_minit, Emp_lname, Emp_nametag, Emp_emp_e#a, Emp_emp_e#n, Emp_address, Emp_salary, Emp_pl_name, Emp_gender, Emp_datehired, Emp_e#a, Emp_e#n) 
-PLANT (Pl_p#, Pl_budget, Pl_name, Pl_emp_e#a, Pl_emp_e#n, Pl_mgrstdte) 
-BUILDING (Bld_building, Bld_pl_p#) 
-PROJECT (Prj_name, Prj_location, Prj_p#, Prj_pl_p#) 
-ASSIGNMENT (Asg_prj_p#, Asg_emp_e#a, Asg_emp_e#n, Asg_hrs) 
-DEPENDENT (Dep_sex, Dep_brthdte, Dep_name, Dep_relhow, Dep_emp_e#a, Dep_emp_e#n) 
-BCU_ACCOUNT (Bcu_dep_name, Bcu_dep_relhow, Bcu_dep_emp_e#a, Bcu_dep_emp_e#n, Bcu_acct_type, Bcu_acct#, Bcu-balance, Bk_emp_e#a, Bcu_emp_e#n) 
-PARTICIPATION (Par_dep_name, Par_dep_relhow, Par_dep_emp_e#a, Par_dep_emp_e#n, Par_hob_name, Par_anncost, Par_hrsweek) 
-HOBBY (Hob_name, Hob_Ioact, Hob_giact) 
-In addition to the primary key constraints shown in the figure, these tables contain the following constraints (i.e., business rules).
-PLANT Table
-• No two plants can have the same name.
-• Plant numbers are allowed to range between 10 and 20 inclusive.
-EMPLOYEE Table
-• Each employee must have a first name and a last name.
-• Employee salaries can range between $35,000 and $90,000 inclusive.
-• Valid genders are ‘M’ and ‘F’.
-• Each employee must work in an existing plant.
-• The supervisor of an employee must be an existing employee.
-• No two employees can have the same first name, middle initial, last name, and nametag combination.
-BUILDING Table
-• Each building must be part of an existing plant.
-PROJECT Table
-• Projects are located in the following cities (Bellaire, Blue Ash, Mason, Stafford, and Sugarland).
-• Each project must be associated with an existing plant.
-• Project numbers range from 1 to 40 inclusive.
-ASSIGNMENT Table
-• Each assignment must be associated with an existing employee and an existing project.
-DEPENDENT Table
-•	The sex of a dependent can be (‘M’, ‘F’, ‘m’, or ‘f’).
-•	A dependent must be a dependent of an existing employee.
-•	A dependent can be related to an employee in the following ways:
-o	A dependent can be the employee’s spouse.
-o	A dependent who is a mother or daughter must be a female.
-o	A dependent who is a father or son must be a male.
-BCU_ACCOUNT Table
-• A bcu_account can belong to either an employee, a dependent, or (an employee and a dependent).
-• Valid account types are ‘C’, ‘S’, or ‘I’.
-HOBBY Table
-• Valid values for the indoor/outdoor attribute are ‘I’ or ‘O’.
-• Valid values for the group/individual attribute are ‘G’ or ‘I’.
-PARTICIPATION Table
-• A participation must involve an existing hobby and an existing dependent. 
+#Consider the relational model for Bearcat Incorporated. 
+#EMPLOYEE (Emp_fname, Emp_minit, Emp_lname, Emp_nametag, Emp_emp_e#a, Emp_emp_e#n, Emp_address, Emp_salary, Emp_pl_name, Emp_gender, Emp_datehired, Emp_e#a, Emp_e#n) 
+#PLANT (Pl_p#, Pl_budget, Pl_name, Pl_emp_e#a, Pl_emp_e#n, Pl_mgrstdte) 
+#BUILDING (Bld_building, Bld_pl_p#) 
+#PROJECT (Prj_name, Prj_location, Prj_p#, Prj_pl_p#) 
+#ASSIGNMENT (Asg_prj_p#, Asg_emp_e#a, Asg_emp_e#n, Asg_hrs) 
+#DEPENDENT (Dep_sex, Dep_brthdte, Dep_name, Dep_relhow, Dep_emp_e#a, Dep_emp_e#n) 
+#BCU_ACCOUNT (Bcu_dep_name, Bcu_dep_relhow, Bcu_dep_emp_e#a, Bcu_dep_emp_e#n, Bcu_acct_type, Bcu_acct#, Bcu-balance, Bk_emp_e#a, Bcu_emp_e#n) 
+#PARTICIPATION (Par_dep_name, Par_dep_relhow, Par_dep_emp_e#a, Par_dep_emp_e#n, Par_hob_name, Par_anncost, Par_hrsweek) 
+#HOBBY (Hob_name, Hob_Ioact, Hob_giact) 
+#In addition to the primary key constraints shown in the figure, these tables contain the following constraints (i.e., business rules).
+#PLANT Table
+#• No two plants can have the same name.
+#• Plant numbers are allowed to range between 10 and 20 inclusive.
+#EMPLOYEE Table
+#• Each employee must have a first name and a last name.
+#• Employee salaries can range between $35,000 and $90,000 inclusive.
+#• Valid genders are ‘M’ and ‘F’.
+#• Each employee must work in an existing plant.
+#• The supervisor of an employee must be an existing employee.
+#• No two employees can have the same first name, middle initial, last name, and nametag combination.
+#BUILDING Table
+#• Each building must be part of an existing plant.
+#PROJECT Table
+#• Projects are located in the following cities (Bellaire, Blue Ash, Mason, Stafford, and Sugarland).
+#• Each project must be associated with an existing plant.
+#• Project numbers range from 1 to 40 inclusive.
+#ASSIGNMENT Table
+#• Each assignment must be associated with an existing employee and an existing project.
+#DEPENDENT Table
+#•	The sex of a dependent can be (‘M’, ‘F’, ‘m’, or ‘f’).
+#•	A dependent must be a dependent of an existing employee.
+#•	A dependent can be related to an employee in the following ways:
+#o	A dependent can be the employee’s spouse.
+#o	A dependent who is a mother or daughter must be a female.
+#o	A dependent who is a father or son must be a male.
+#BCU_ACCOUNT Table
+#• A bcu_account can belong to either an employee, a dependent, or (an employee and a dependent).
+#• Valid account types are ‘C’, ‘S’, or ‘I’.
+#HOBBY Table
+#• Valid values for the indoor/outdoor attribute are ‘I’ or ‘O’.
+#• Valid values for the group/individual attribute are ‘G’ or ‘I’.
+#PARTICIPATION Table
+#• A participation must involve an existing hobby and an existing dependent. 
 
-18, 19, 20. Write SQL code to create Employee, Dependent, and Hobby tables.
+#18, 19, 20. Write SQL code to create Employee, Dependent, and Hobby tables.
 
 
 #Answer 18 :
