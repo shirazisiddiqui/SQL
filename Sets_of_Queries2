@@ -1,3 +1,4 @@
+#Question 1:
 Consider the following relational schema:
 
 	Staff		(staffNo, name, dept, skillCode)
@@ -11,7 +12,8 @@ Consider the following relational schema:
   the key is skillCode. 
 	Project		contains project details and projectNo is the key. 
 	Booking	contains details of the date and the number of hours that a member of staff worked on a project and the key is staffNo/projectNo.
- 
+
+#Answer: 1
 Formulate the following queries using SQL (1 & 2)
 1.	For all projects that were active in July 1995, list the staff name, project number and the date and number of hours worked on the project, ordered by staff name, within staff name by the project number and within project number by date.
 
@@ -22,8 +24,9 @@ and S. staffNo =B. staffNo
 and P. endDate > = 01-Jul-1995 
 Order by name, projectNo, dateWorkedOn;
 
-2.	Create a view of staff details giving the staff number, staff name, skill description, and department, but excluding the skill number and charge out rate.
+#Question 2: Create a view of staff details giving the staff number, staff name, skill description, and department, but excluding the skill number and charge out rate.
 
+#Answer 2: 
 Create view Staff_vw as
 Select S. staffNo, S. name, SL. description, S. Dept
 From Staff S, Skill SL
@@ -40,7 +43,7 @@ The following tables form part of a database held in a Relational Database Manag
 	Department 	contains department details and deptNo is the key. mgrEmpID identifies the employee who is the manager of the department. There is only one manager for each department.
 	Project	 contains details of the projects in each department and the key is projNo (no two departments can run the same project) and WorksOn contains details of the hours worked by employees on each project, and empID/projNo form the key.
 
-3.	Produce a complete list of all managers who are due to retire this year, in alphabetical order of surname.
+#Question 3: Produce a complete list of all managers who are due to retire this year, in alphabetical order of surname.
 Suppose retirement age is 60:
 
 Select lName From Department D, Employee E 
@@ -49,7 +52,7 @@ D. mgrEmpID=E. EmpID
 And ((Sysdate-DOB)/365.25)>=60
 Order by lName;
 
-4.	Find out how many employees are managed by ‘James Adams’.
+#Question 4: Find out how many employees are managed by ‘James Adams’.
 
 Select COUNT(*) From Employee E , Department D
 Where 
@@ -57,7 +60,7 @@ D. deptNo = E. deptNo
 And D.mgrEmpID = E.empID
 And fName =’James’ and lName = ‘Adams’;
 
-5.	Produce a report of the total hours worked by each employee, arranged in order of department number and within department, alphabetically by employee surname.
+#Question 5:	Produce a report of the total hours worked by each employee, arranged in order of department number and within department, alphabetically by employee surname.
 
 Select  Sum(hoursWorked), D.deptNo, E. lName  
 From WorksOn W, Employee E , Department D
@@ -66,7 +69,7 @@ W. empID = E. empID
 Group By D.deptNo, E. lName  
 Order by D.deptNo, E.lName;
 
-6.	For each project on which more than two employees worked, list the project number, project name and the number of employees who work on that project.
+#Question 6:	For each project on which more than two employees worked, list the project number, project name and the number of employees who work on that project.
 
 Select P.projNo, P.projName, count(E.empID) 
 From Project P, WorksOn W
@@ -75,6 +78,7 @@ P. projNo = W. projNo
 Group By P.projNo, P.projName
 Having count(E.empID) >2;
 
+#-------------------------------
 The relational schema shown below is part of a hospital database. The primary keys are highlighted in bold.
 
 	Patient (patientNo, patName, patAddr, DOB)
@@ -86,7 +90,7 @@ The relational schema shown below is part of a hospital database. The primary ke
 	Formulate the following SQL statements using the above schema (7, 8, & 9)
 
 
-7.	What is the total cost of Morphine supplied to a patient called ‘John Smith’ ?
+#Question 7: What is the total cost of Morphine supplied to a patient called ‘John Smith’ ?
 
 Select SUM(D.costPerUnit) 
 From Drug D , Prescribed P , Patient Pat
@@ -96,7 +100,7 @@ And P. patientNo=Pat. patientNo
 And Pat. patName = ‘John Smith’
 And D. drugName = ‘Morphine’;
 
-8.	For each ward that admitted more than 10 patients today, list the ward number, ward type and number of beds in each ward.
+#Question 8:	For each ward that admitted more than 10 patients today, list the ward number, ward type and number of beds in each ward.
 
 Select W. wardNo, W. wardType, W. noOfBeds 
 From Ward W , Contains C , Patient Pat
@@ -107,7 +111,7 @@ And C.admissionDate =Sysdate
 Having count(C. patientNo) > 10;
 
 
-9.	List the numbers and names of all patients and the drugNo and number of units of their medication. The list should also include the details of patients that are not prescribed medication.
+#Question 9:	List the numbers and names of all patients and the drugNo and number of units of their medication. The list should also include the details of patients that are not prescribed medication.
 
 Select Pat.patientNo, Pat.patName, P. drugNo , P.unitsPerDay 
 From  
@@ -115,7 +119,7 @@ Patient Pat
 Left Join Prescribed P
 On P. patientNo=Pat. patientNo;
 
-
+#-----------------------------------------------------
 A relational database contains details about journeys from Paisley to a variety of destinations and contains the following relations:
 
 		Operator (opCode, opName)
@@ -126,7 +130,7 @@ A relational database contains details about journeys from Paisley to a variety 
 
 Formulate the following queries using SQL (10, 11, & 12)
 
-10.	List the names of all operators with at least one journey priced at under £5.
+#Question 10:	List the names of all operators with at least one journey priced at under £5.
 
 Select opName 
 From Operator O, Journey J
@@ -135,7 +139,7 @@ J. opCode=O. opCode
 And J. price<5;
 
 
-11.	List the names of all operators and prices of journeys to ‘Ayr’.
+#Question 11:	List the names of all operators and prices of journeys to ‘Ayr’.
 
 Select O. opName, J. price 
 From Operator O, Journey J, Destination D
@@ -145,7 +149,7 @@ And J. opCode=O. opCode
 And D. destinationName = ’Ayr’
 
 
-12.	List the names of all destinations that do not have any operators.
+#Question 12:	List the names of all destinations that do not have any operators.
 
 Select destinationName 
 From Destination D, Operator O, Journey J
@@ -168,7 +172,7 @@ The following tables form part of a database held in a Relational Database Manag
 
 Formulate the following queries in SQL (13, 14, 15, & 16)
 
-13.	List the employee numbers of employees who have the highest salary.
+#Question 13:	List the employee numbers of employees who have the highest salary.
 
 Select empNo 
 From Employee E1
@@ -176,7 +180,7 @@ Where
 E1. Salary In (Select max(E2.Salary) from Employee E2);
 
 
-14.	List the employee numbers of employees who have the second highest salary.
+#Question 14:	List the employee numbers of employees who have the second highest salary.
 
 Select empNo From Employee E1 
 Where E1.Salary In 
@@ -185,18 +189,20 @@ Where Salary Not In
 (Select max(E3.Salary) from Employee E3);
 
 
-15.	List the employee numbers of employees who are certified for exactly three aircraft.
+#Question 15: List the employee numbers of employees who are certified for exactly three aircraft.
 
 Select E.empNo From Certified C, Employee E
 Where E.empNo = C.empNo
 Group By E.empNo
 Having count(aircraftNo) = 3;
 
-16.	Assume that the following tables are part of a Company database schema
+#Question 16:	Assume that the following tables are part of a Company database schema
     Customer(custNo, custName, address, sex, DOB, creditLimit) 
     HighCredit(hcCustNo, hcCustName, hcCreditLimit)
 
 Create a PL/SQL procedure object in your schema. Using a prompt variable to retrieve record of a customers and check his/her credit limit. If a customer credit limit is greater than 100000 the procedure should insert a record in the table HighCredits.
+
+#Answer 16:
 
 SET SERVEROUTPUT ON
 
@@ -221,13 +227,14 @@ END IF;
 
 END;
 
-17.	Assume the following tables:
+#Question 17:	Assume the following tables:
 
 Order(orderNo, statusCode, customerNo,…)
 Item(itemNo, orderNo, price, amount,…)
 
 which capture, among others, the items that are ordered by customers. Explain what the following code is and explain how it works by writing comments against each line of the code: 
 
+#Answer 17:
 SET SERVEROUTPUT ON
 
 statusCode_int order.statusCode%TYPE;
@@ -263,6 +270,7 @@ Condition of query : EXISTS condition is true if subquery return some data from 
 Step 3: 
 Checking the output of above query whether Total_Order is greater than 500.If greater than 500 then Display output as High Value Customer  else CustomerNo_in and END the query.
 
+####----------------------------------------------------
 Consider the relational model for Bearcat Incorporated. 
 EMPLOYEE (Emp_fname, Emp_minit, Emp_lname, Emp_nametag, Emp_emp_e#a, Emp_emp_e#n, Emp_address, Emp_salary, Emp_pl_name, Emp_gender, Emp_datehired, Emp_e#a, Emp_e#n) 
 PLANT (Pl_p#, Pl_budget, Pl_name, Pl_emp_e#a, Pl_emp_e#n, Pl_mgrstdte) 
@@ -311,7 +319,7 @@ PARTICIPATION Table
 18, 19, 20. Write SQL code to create Employee, Dependent, and Hobby tables.
 
 
-18.
+#Answer 18 :
 Create table EMPLOYEE  (
 Emp_fname  CHAR(25)    NOT NULL, 
 Emp_minit   CHAR(5), 
@@ -339,7 +347,7 @@ CONSTRAINT 	Emp_super_e#nFK	  FOREIGN KEY(Emp_super_e#n) REFERENCES Employee(Emp
 CONSTRAINT Emp_Pl_p#FK	  FOREIGN KEY(Emp_Pl_p#) REFERENCES PLANT (Pl_p#)
  );
 
-19.
+#Answer 19:
 
 Create table DEPENDENT (
 Dep_sex CHAR(10)    , 
@@ -356,7 +364,7 @@ CONSTRAINT Dep_relhowCheck
 CHECK ((Dep_sex = 'F' AND Dep_relhow IN ('Daughter', 'Spouse',’Mother’)) OR (Dep_sex = 'M' AND Dep_relhow IN ('Son', 'Spouse',’Father’)));
 );
 
-20.
+#Answer 20:
 
 Create table HOBBY (
 Hob_name VARCHAR(50)    , 
