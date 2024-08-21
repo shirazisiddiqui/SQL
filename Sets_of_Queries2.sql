@@ -1,21 +1,21 @@
-#Question 1:
-Consider the following relational schema:
+#/*Question 1:
+#Consider the following relational schema:
 
-	Staff		(staffNo, name, dept, skillCode)
-	Skill		(skillCode, description, chargeOutRate)
-	Project		(projectNo, startDate, endDate, budget, projectManagerStaffNo)
-	Booking	(staffNo, projectNo, dateWorkedOn, timeWorkedOn)
+#	Staff		(staffNo, name, dept, skillCode)
+#	Skill		(skillCode, description, chargeOutRate)
+#	Project		(projectNo, startDate, endDate, budget, projectManagerStaffNo)
+#	Booking	(staffNo, projectNo, dateWorkedOn, timeWorkedOn)
 	
-	where:	Staff	contains staff details and staffNo is the key.
-	Skill 		contains descriptions of skill codes (e.g. Programmer, Analyst, 
-	Manager, etc.) and the charge out rate per hour for that skill; 
-  the key is skillCode. 
-	Project		contains project details and projectNo is the key. 
-	Booking	contains details of the date and the number of hours that a member of staff worked on a project and the key is staffNo/projectNo.
+#	where:	Staff	contains staff details and staffNo is the key.
+#	Skill 		contains descriptions of skill codes (e.g. Programmer, Analyst, 
+#	Manager, etc.) and the charge out rate per hour for that skill; 
+#       the key is skillCode. 
+#	Project contains project details and projectNo is the key. 
+#	Booking	contains details of the date and the number of hours that a member of staff worked on a project and the key is staffNo/projectNo.*/
 
 #Answer: 1
-Formulate the following queries using SQL (1 & 2)
-1.	For all projects that were active in July 1995, list the staff name, project number and the date and number of hours worked on the project, ordered by staff name, within staff name by the project number and within project number by date.
+#Formulate the following queries using SQL (1 & 2)
+#1.	For all projects that were active in July 1995, list the staff name, project number and the date and number of hours worked on the project, ordered by staff name, within staff name by the project number and within project number by date.
 
 Select name, P. projectNo, dateWorkedOn, timeWorkedOn 
 From Staff S, Booking B, Project P WHERE 
